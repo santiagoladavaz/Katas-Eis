@@ -1,54 +1,43 @@
 require 'rspec'
-require_relative '../model/cuenta_corriente'
+require_relative '../model/char_counter.rb'
 
-describe 'CuentaCorriente' do
+describe 'CharCounter' do
 
-	describe 'initialize' do
+  it 'should return {a=>1} when string is a' do
+    dic = CharCounter.count('a')
+    dic['a'].should be 1
+  end
 
-		it 'deberia comenzar con saldo 0' do
-			cuenta_corriente = CuentaCorriente.new
-			cuenta_corriente.saldo.should eq 0
-		end
-		
-	end
+  it 'should return {b=>nil} when string is a' do
+    dic = CharCounter.count('a')
+    dic['b'].should be nil
+  end
 
-	describe 'acreditar' do
+  it 'should return {a=>2,t=>1,d=>1,0=>1 } when string is atado' do
+    dic = CharCounter.count('atado')
+    dic['a'].should be 2
+    dic['t'].should be 1
+    dic['d'].should be 1
+    dic['o'].should be 1
+  end
 
-		it 'deberia incremantar el saldo con el monto acreditado' do
-			cuenta_corriente = CuentaCorriente.new
-			cuenta_corriente.acreditar 100
-			cuenta_corriente.saldo.should eq 100
-		end
-		
-	end
+  it 'should return {a=>2,t=>1,d=>1,0=>1 } when string is ata do' do
+    dic = CharCounter.count('ata do')
+    dic['a'].should be 2
+    dic['t'].should be 1
+    dic['d'].should be 1
+    dic['o'].should be 1
+    dic.size.should be 4
+  end
 
-	describe 'debitar' do
+  it 'should return {} when string is empty' do
+    dic = CharCounter.count('')
+    dic.size.should be 0
+  end
 
-		it 'deberia debitar el saldo con el monto a debitar' do
-			cuenta_corriente = CuentaCorriente.new
-			cuenta_corriente.acreditar 100
-			cuenta_corriente.debitar 10
-			cuenta_corriente.saldo.should eq 90
-		end
-
-	end
-
-	describe 'bloqueada' do
-
-		it 'deberia permitir operar si no esta bloqueada' do
-			cuenta_corriente = CuentaCorriente.new
-			cuenta_corriente.acreditar 100
-			cuenta_corriente.debitar 110
-			cuenta_corriente.saldo.should eq -10
-		end
-
-		it 'no deberia permitir operar si esta bloqueada' do
-			cuenta_corriente = CuentaCorriente.new
-			cuenta_corriente.acreditar 100
-			cuenta_corriente.debitar 201
-			cuenta_corriente.debitar 10
-			cuenta_corriente.saldo.should eq -101
-		end 
-	end
+  it 'should return {} when string is nil' do
+    dic = CharCounter.count(nil)
+    dic.size.should be 0
+  end
 
 end

@@ -1,17 +1,14 @@
 class CharCounter
 
-	def initialize
-		@dic = Hash.new
+	def self.count(string)
+		dic = Hash.new
+        if string == nil
+            return dic
+        end
+        string = string.delete(" ")
+	    string.each_char{|c| dic[c] = string.count(c)}	
+        
+        dic
 	end
 
-	def saldo(char)
-		if char == ""
-			dic
-		end
-		dic.each_char do |c|
-      		hash[c] = string.count c
-		
-	end
-
-	
 end
