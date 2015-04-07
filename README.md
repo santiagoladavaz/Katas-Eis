@@ -1,1 +1,1 @@
-# Katas de la materia Ingenieria de Software.
+# Katas de la materia Ing. de Software.
