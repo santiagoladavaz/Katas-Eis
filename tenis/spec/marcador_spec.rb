@@ -1,5 +1,6 @@
 require 'rspec'
 require_relative '../model/marcador'
+require_relative '../model/jugador'
 
 describe 'Marcador' do
 
@@ -14,7 +15,19 @@ describe 'Marcador' do
 			marcador = Marcador.new
 			marcador.sets.count.should eq 0
 		end
-		
+
+	end
+end
+
+
+describe 'Jugador' do
+
+	describe 'initialize' do
+
+		it 'deberia comenzar con 0 puntos' do
+			jugador = Jugador.new('Santi')
+			jugador.puntos.should eq 0
+		end
 	end
 
 end
