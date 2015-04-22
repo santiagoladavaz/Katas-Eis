@@ -6,4 +6,8 @@ class Marcador
 		@sets = []
 	end
 
+	def agregarGame(jugador, partido)
+		@games.push(jugador.nombre)
+	end
+
 end
