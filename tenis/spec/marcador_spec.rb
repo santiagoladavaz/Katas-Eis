@@ -78,9 +78,27 @@ describe 'Jugador' do
 			jugador.sumarPunto(jugador_dos, partido)
 			jugador.sumarPunto(jugador_dos, partido)
 			jugador.sumarPunto(jugador_dos, partido)
+			jugador_dos.sumarPunto(jugador, partido)
 			jugador.sumarPunto(jugador_dos, partido)
 			marcador.sets.count(jugador.nombre).should eq 1
 			marcador.games.count.should eq 0
+			jugador.puntos.should eq 0
+			jugador_dos.puntos.should eq 0
+		end
+
+		it 'deberia ganar partido si gano un set y ya tengo uno ganado' do
+			jugador = Jugador.new('Santi')
+			jugador_dos = Jugador.new('Federer')
+			marcador = Marcador.new
+			marcador.games.insert(0,'Santi','Santi','Santi','Santi','Santi')
+			marcador.sets.insert(0,'Santi','Federer')
+			partido = Partido.new(jugador, jugador_dos, marcador)
+			jugador.sumarPunto(jugador_dos, partido)
+			jugador.sumarPunto(jugador_dos, partido)
+			jugador.sumarPunto(jugador_dos, partido)
+			jugador.sumarPunto(jugador_dos, partido)
+			marcador.sets.count(jugador.nombre).should eq 2
+			partido.ganador.should eq 'Santi'
 		end
 
 	end

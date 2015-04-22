@@ -13,6 +13,10 @@ class Marcador
 			@sets.push(jugador.nombre)
 			resetGames
 		end
+
+		if @sets.count(jugador.nombre) == 2
+			partido.ganador = jugador.nombre
+		end
 	end
 
 	def resetGames
