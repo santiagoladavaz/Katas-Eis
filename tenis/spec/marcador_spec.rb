@@ -28,6 +28,12 @@ describe 'Jugador' do
 			jugador = Jugador.new('Santi')
 			jugador.puntos.should eq 0
 		end
+
+		it 'deberia tener un punto si hace un tanto' do
+			jugador = Jugador.new('Santi')
+			jugador.sumarPunto
+			jugador.puntos.should eq 1
+		end
 	end
 
 end

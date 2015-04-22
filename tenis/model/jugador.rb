@@ -6,4 +6,8 @@ class Jugador
 		@puntos = 0
 	end
 
+	def sumarPunto
+		@puntos += 1
+	end
+
 end
