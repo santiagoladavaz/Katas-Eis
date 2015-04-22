@@ -68,5 +68,20 @@ describe 'Jugador' do
 			jugador.puntos.should eq 0
 			jugador_dos.puntos.should eq 0
 		end
+
+		it 'deberia ganar set si gano un game y tengo otros 5 games ganados' do
+			jugador = Jugador.new('Santi')
+			jugador_dos = Jugador.new('Federer')
+			marcador = Marcador.new
+			marcador.games.insert(0,'Santi','Santi','Santi','Santi','Santi')
+			partido = Partido.new(jugador, jugador_dos, marcador)
+			jugador.sumarPunto(jugador_dos, partido)
+			jugador.sumarPunto(jugador_dos, partido)
+			jugador.sumarPunto(jugador_dos, partido)
+			jugador.sumarPunto(jugador_dos, partido)
+			marcador.sets.count(jugador.nombre).should eq 1
+			marcador.games.count.should eq 0
+		end
+
 	end
 end

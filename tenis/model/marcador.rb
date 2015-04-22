@@ -8,6 +8,16 @@ class Marcador
 
 	def agregarGame(jugador, partido)
 		@games.push(jugador.nombre)
+		
+		if @games.count(jugador.nombre) == 6
+			@sets.push(jugador.nombre)
+			resetGames
+		end
 	end
+
+	def resetGames
+		@games = []
+	end
+
 
 end
