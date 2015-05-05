@@ -19,9 +19,7 @@ describe 'Battleship' do
 
   it 'should create small ship in 3:3 location' do
     @board.put_small_ship 3,3
-    expect(@board.matriz[3,3]).to eq 1
+    expect(@board.matriz[3,3].nombre).to eq "SmallShip"
   end
-
-
 
 end

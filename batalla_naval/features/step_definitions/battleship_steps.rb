@@ -15,5 +15,5 @@ Then(/^position "(.*?)" is not empty$/) do |coord|
  a = coord.split(":")
  x = a[0].to_i
  y= a[1].to_i
- @board.matriz[x,y].should eq 1
+ expect(@board.is_empty(x,y)).to eq false
 end

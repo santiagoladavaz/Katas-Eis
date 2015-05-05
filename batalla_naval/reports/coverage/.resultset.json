@@ -2,7 +2,7 @@
   "RSpec": {
     "coverage": {
     },
-    "timestamp": 1430841939
+    "timestamp": 1430852350
   },
   "Cucumber Features": {
     "coverage": {
@@ -12,8 +12,27 @@
         1,
         null,
         1,
+        null,
+        null,
+        1,
         26,
         null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/santi/Ing.Soft/batalla_naval/app/models/SmallShip.rb": [
+        1,
+        null,
+        1,
         null,
         1,
         1,
@@ -22,6 +41,6 @@
         null
       ]
     },
-    "timestamp": 1430841942
+    "timestamp": 1430852352
   }
 }
