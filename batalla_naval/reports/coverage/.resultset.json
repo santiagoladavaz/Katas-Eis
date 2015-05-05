@@ -1,0 +1,24 @@
+{
+  "RSpec": {
+    "coverage": {
+    },
+    "timestamp": 1430838911
+  },
+  "Cucumber Features": {
+    "coverage": {
+      "/home/santi/Ing.Soft/batalla_naval/app/models/Board.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1430838913
+  }
+}
