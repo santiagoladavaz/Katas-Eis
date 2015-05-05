@@ -24,5 +24,9 @@ class Board
  	  @matriz[x,y] == 0
   end
 
+  def shoot(x,y)
+    @matriz[x,y].get_shoot
+  end
+
 
 end

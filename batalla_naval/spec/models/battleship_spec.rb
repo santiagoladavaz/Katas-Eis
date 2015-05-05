@@ -29,3 +29,21 @@ describe 'Battleship' do
   end
 
 end
+
+describe 'Shoot' do
+
+    before (:each) do
+      @board = Board.new 5,5
+    end
+
+  it 'should get HIT when I shoot LargeShip' do
+    @board.put_large_ship 3,3
+    expect(@board.shoot(3,3)).to eq 'HIT'
+  end
+
+  it 'should be one part of LargeShip when I hit it' do
+    @board.put_large_ship 3,3
+    @board.shoot(3,3)
+    expect(@board.matriz[3,3].parts).to eq 1
+  end  
+end

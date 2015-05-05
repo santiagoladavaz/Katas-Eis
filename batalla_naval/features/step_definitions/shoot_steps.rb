@@ -12,3 +12,13 @@ Given(/^a large ship in position "(.*?)"$/) do |coord|
 end
 
 
+Given(/^I shoot to position "(.*?)"$/) do |coord|
+  a = coord.split(":")
+  x = a[0].to_i
+  y= a[1].to_i
+  @res_of_shoot = @board.shoot(x,y)
+end
+
+Then(/^I get hit$/) do
+	expect(@res_of_shoot).to eq 'HIT'
+end
