@@ -1,0 +1,14 @@
+require_relative '../../app/models/Board.rb'
+
+Given(/^a board with dimension "(.*?)" x "(.*?)"$/) do |x, y|
+  @board = Board.new(x.to_i, y.to_i)
+end
+
+Given(/^a large ship in position "(.*?)"$/) do |coord|
+  a = coord.split(":")
+  x = a[0].to_i
+  y= a[1].to_i
+  @board.put_large_ship(x,y) 
+end
+
+
