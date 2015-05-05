@@ -17,4 +17,11 @@ describe 'Battleship' do
     @board.matriz.column_count.should be 5
   end
 
+  it 'should create small ship in 3:3 location' do
+    @board.put_small_ship 3,3
+    expect(@board.matriz[3,3]).to eq 1
+  end
+
+
+
 end
