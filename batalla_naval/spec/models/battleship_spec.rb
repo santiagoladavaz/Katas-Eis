@@ -22,4 +22,10 @@ describe 'Battleship' do
     expect(@board.matriz[3,3].nombre).to eq "SmallShip"
   end
 
+  it 'should create large ship in 3:3 location' do
+    @board.put_large_ship 3,3
+    expect(@board.matriz[3,3].nombre).to eq "LargeShip"
+    expect(@board.matriz[3,4].nombre).to eq "LargeShip"
+  end
+
 end

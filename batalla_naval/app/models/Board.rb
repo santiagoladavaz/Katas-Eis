@@ -13,9 +13,16 @@ class Board
   	@matriz.send(:[]=,x,y,SmallShip.new)		
   end
 
- def is_empty(x,y)
- 	@matriz[3,3] == 0
- end
+  def put_large_ship(x,y)
+    large_ship = LargeShip.new
+  	@matriz.send(:[]=,x,y,large_ship)
+    @matriz.send(:[]=,x,y+1,large_ship)		
+  end
+
+  
+  def is_empty(x,y)
+ 	  @matriz[x,y] == 0
+  end
 
 
 end
