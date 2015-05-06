@@ -18,12 +18,12 @@ describe 'Battleship' do
   end
 
   it 'should create small ship in 3:3 location' do
-    @board.put_small_ship 3,3
+    @board.put_small_ship "3:3"
     expect(@board.matriz[3,3].nombre).to eq "SmallShip"
   end
 
   it 'should create large ship in 3:3 location' do
-    @board.put_large_ship 3,3
+    @board.put_large_ship "3:3"
     expect(@board.matriz[3,3].nombre).to eq "LargeShip"
     expect(@board.matriz[3,4].nombre).to eq "LargeShip"
   end
@@ -37,23 +37,23 @@ describe 'Shoot' do
     end
 
   it 'should get HIT when I shoot LargeShip' do
-    @board.put_large_ship 3,3
-    expect(@board.shoot(3,3)).to eq 'HIT'
+    @board.put_large_ship "3:3"
+    expect(@board.shoot("3:3")).to eq 'HIT'
   end
 
   it 'should be one part of LargeShip when I hit it' do
-    @board.put_large_ship 3,3
-    @board.shoot(3,3)
+    @board.put_large_ship "3:3"
+    @board.shoot("3:3")
     expect(@board.matriz[3,4].parts).to eq 1
   end  
 
   it 'should get WATER when I shoot LargeShip' do
-    expect(@board.shoot(3,3)).to eq 'WATER'
+    expect(@board.shoot("3:3")).to eq 'WATER'
   end 
 
   it 'should get SINK when I shoot twice a LargeShip ' do
-    @board.put_large_ship 3,3
-    expect(@board.shoot(3,3)).to eq 'HIT'
-    expect(@board.shoot(3,4)).to eq 'SINK'
+    @board.put_large_ship "3:3"
+    expect(@board.shoot("3:3")).to eq 'HIT'
+    expect(@board.shoot("3:4")).to eq 'SINK'
   end
 end

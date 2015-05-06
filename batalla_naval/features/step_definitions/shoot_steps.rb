@@ -5,19 +5,13 @@ Given(/^a board with dimension "(.*?)" x "(.*?)"$/) do |x, y|
 end
 
 Given(/^a large ship in position "(.*?)"$/) do |coord|
-  a = coord.split(":")
-  x = a[0].to_i
-  y= a[1].to_i
-  @board.put_large_ship(x,y) 
+  @board.put_large_ship(coord) 
 end
 
 
 Given(/^I shoot to position "(.*?)"$/) do |coord|
-  a = coord.split(":")
-  x = a[0].to_i
-  y= a[1].to_i
-  @res_of_shoot = @board.shoot(x,y)
-  @res_of_second_shoot = @board.shoot(x,y)
+  @res_of_shoot = @board.shoot(coord)
+  @res_of_second_shoot = @board.shoot(coord)
 end
 
 Then(/^I get hit$/) do
