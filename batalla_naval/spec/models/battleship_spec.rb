@@ -44,6 +44,10 @@ describe 'Shoot' do
   it 'should be one part of LargeShip when I hit it' do
     @board.put_large_ship 3,3
     @board.shoot(3,3)
-    expect(@board.matriz[3,3].parts).to eq 1
+    expect(@board.matriz[3,4].parts).to eq 1
   end  
+
+  it 'should get WATER when I shoot LargeShip' do
+    expect(@board.shoot(3,3)).to eq 'WATER'
+  end 
 end

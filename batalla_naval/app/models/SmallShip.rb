@@ -1,13 +1,21 @@
-class Ship
+class Components
+	def get_shoot
+  	end
+end
+
+class Water < Components
+	def get_shoot
+		'WATER'
+	end
+end
+
+class Ship < Components
  
 	attr_accessor :nombre
 
 	def initialize(nombre)
 	    @nombre = nombre 
 	end
-
-	def get_shoot
-  	end
 
 end
 

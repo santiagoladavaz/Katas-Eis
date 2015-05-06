@@ -17,8 +17,14 @@ Given(/^I shoot to position "(.*?)"$/) do |coord|
   x = a[0].to_i
   y= a[1].to_i
   @res_of_shoot = @board.shoot(x,y)
+  @res_of_second_shoot = @board.shoot(x,y)
 end
+
 
 Then(/^I get hit$/) do
 	expect(@res_of_shoot).to eq 'HIT'
+end
+
+Then(/^I get water$/) do
+  expect(@res_of_second_shoot).to eq 'WATER'
 end

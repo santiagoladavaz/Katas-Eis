@@ -6,7 +6,7 @@ class Board
   
   
   def initialize(rows, columns)
-    @matriz = Matrix.build(rows,columns){0}
+    @matriz = Matrix.build(rows,columns){Water.new}
   end
 
   def put_small_ship(x,y)
@@ -21,11 +21,17 @@ class Board
 
   
   def is_empty(x,y)
- 	  @matriz[x,y] == 0
+ 	  @matriz[x,y] == 'WATER'
   end
 
+  
   def shoot(x,y)
-    @matriz[x,y].get_shoot
+    res = @matriz[x,y].get_shoot 
+    if res.eql?("SINK") || res.eql?("HIT")
+      @matriz.send(:[]=,x,y,Water.new)
+    end
+  
+    return res
   end
 
 

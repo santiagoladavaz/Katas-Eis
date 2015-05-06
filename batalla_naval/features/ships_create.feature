@@ -12,4 +12,3 @@ Feature: Ships create
 		Given I create a large ship in position "3:3"
 		Then position "3:3" is not empty	
 		And position "3:4" is not empty
-
