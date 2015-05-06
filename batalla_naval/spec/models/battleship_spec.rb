@@ -50,4 +50,10 @@ describe 'Shoot' do
   it 'should get WATER when I shoot LargeShip' do
     expect(@board.shoot(3,3)).to eq 'WATER'
   end 
+
+  it 'should get SINK when I shoot twice a LargeShip ' do
+    @board.put_large_ship 3,3
+    expect(@board.shoot(3,3)).to eq 'HIT'
+    expect(@board.shoot(3,4)).to eq 'SINK'
+  end
 end

@@ -45,7 +45,7 @@ class LargeShip < Ship
 	def get_shoot
 		@parts = @parts - 1 
 		if(@parts == 0)
-			"SINK"
+			return "SINK"
 		end
 		"HIT"
 	end
