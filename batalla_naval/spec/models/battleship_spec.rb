@@ -28,6 +28,15 @@ describe 'Battleship' do
     expect(@board.matriz[3,4].nombre).to eq "LargeShip"
   end
 
+  it 'should get HayBarco if i create small ship in location 3:3' do
+    @board.put_small_ship "3:3"
+    @res = @board.put_small_ship "3:3"
+    expect(@res).to eq "HayBarco"
+  end
+
+
+
+
 end
 
 describe 'Shoot' do

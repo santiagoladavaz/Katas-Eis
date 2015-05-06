@@ -11,7 +11,11 @@ class Board
 
   def put_small_ship(coord)
     x,y = getValidCoord(coord)
-  	@matriz.send(:[]=,x,y,SmallShip.new)		
+  	if(!is_empty(coord))
+      return "HayBarco"
+    end
+    @matriz.send(:[]=,x,y,SmallShip.new)		
+    
   end
 
   def put_large_ship(coord)
@@ -24,7 +28,7 @@ class Board
   
   def is_empty(coord)
  	  x,y = getValidCoord(coord)
-    @matriz[x,y] == 'WATER'
+    @matriz[x,y].kind_of? Water
   end
 
   
@@ -45,9 +49,9 @@ class Board
     return x,y
   end
 
-  def getNextPartOfShip(coord)
-    x,y = getValidCoord(coord)
-    return x,y+1
+
+  def invalidPosition(x,y)
+    x < 0 || x > 6 || y < 0 || y > 6
   end
 
 end
