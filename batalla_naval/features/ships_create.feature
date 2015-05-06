@@ -18,3 +18,8 @@ Feature: Ships create
       Given I create a small ship in position "3:3"
       Given I create a small ship in position "3:3"
       Then I get HayBarco
+
+  Scenario: Create a large ship in a valid location
+      Given I create a large ship in position "3:3"
+      Given I create a large ship in position "3:4"
+      Then I get HayBarco

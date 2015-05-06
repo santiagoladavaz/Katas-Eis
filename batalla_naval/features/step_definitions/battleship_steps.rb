@@ -9,16 +9,18 @@ Given(/^I create a small ship in position "(.*?)"$/) do |coord|
 end
 
 Then(/^position "(.*?)" is not empty$/) do |coord|
- expect(@board.is_empty(coord)).to eq false
+ x,y =@board.getValidCoord(coord)
+ expect(@board.is_empty(x,y)).to eq false
 end
 
 
 Given(/^I create a large ship in position "(.*?)"$/) do |coord|
-	@board.put_large_ship(coord)  
+	@res = @board.put_large_ship(coord)  
 end
 
 Then(/^positions "(.*?)" is not empty$/) do |coord|
- expect(@board.is_empty(coord)).to eq false
+ x,y =@board.getValidCoord(coord)
+ expect(@board.is_empty(x,y)).to eq false
 end
 
 Then(/^I get HayBarco$/) do

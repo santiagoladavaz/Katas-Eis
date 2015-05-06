@@ -34,6 +34,12 @@ describe 'Battleship' do
     expect(@res).to eq "HayBarco"
   end
 
+  it 'should get HayBarco if i create large ship in location 3:3' do
+    @board.put_large_ship "3:3"
+    @res = @board.put_large_ship "3:4"
+    expect(@res).to eq "HayBarco"
+  end
+
 
 
 
