@@ -1,12 +1,7 @@
 {
-  "RSpec": {
-    "coverage": {
-    },
-    "timestamp": 1430918511
-  },
   "Cucumber Features": {
     "coverage": {
-      "/home/santi/Ing.Soft/batalla_naval/app/models/Board.rb": [
+      "/home/santi/Ing.Soft/Ejemplo/app/models/Board.rb": [
         1,
         1,
         1,
@@ -22,6 +17,7 @@
         3,
         3,
         1,
+        null,
         null,
         2,
         null,
@@ -61,12 +57,9 @@
         20,
         null,
         null,
-        null,
-        null,
-        null,
         null
       ],
-      "/home/santi/Ing.Soft/batalla_naval/app/models/Components.rb": [
+      "/home/santi/Ing.Soft/Ejemplo/app/models/Components.rb": [
         1,
         1,
         null,
@@ -122,6 +115,11 @@
         null
       ]
     },
-    "timestamp": 1430918513
+    "timestamp": 1431915628
+  },
+  "RSpec": {
+    "coverage": {
+    },
+    "timestamp": 1431915545
   }
 }

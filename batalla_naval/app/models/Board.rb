@@ -14,6 +14,7 @@ class Board
   	if(!is_empty(x,y))
       return "HayBarco"
     end
+    
     @matriz.send(:[]=,x,y,SmallShip.new)		
     
   end
@@ -51,8 +52,5 @@ class Board
     y= a[1].to_i
     return x,y
   end
-
-
-  
 
 end
