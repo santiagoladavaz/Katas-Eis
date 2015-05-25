@@ -1,0 +1,123 @@
+<html>
+<head>
+<!-- BOOTSTRAP -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- /BOOTSTRAP -->
+
+<style>
+.tablero{
+	width: 300px;
+	height: 300px;
+	border-radius: 39px 39px 39px 39px;
+	margin: 0 auto;
+}
+
+table.tablero td {
+ padding: 10px;
+}
+table.tablero td.a {
+ background-image: url("ocean.jpg");
+}
+table.tablero td.b {
+  background-image: url("../../../public/img/ocean.jpg");
+}
+table.tablero td.t {
+  background-image: url("../../../public/img/ocean.jpg");
+}
+
+.divBox
+{
+    width: 100%;
+    height: 100%;
+}
+.divBox a
+{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+table, th, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+ }
+
+
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+	  <div class="col-md-4"><img src="../../../public/img/barco.png" alt="boat" height="200" width="200" ></div>
+	  <div class="col-md-6"><h1>Batalla Naval</h1><p>Ultima kata de la materia Ingenieria de Software</p></div>
+	</div>
+   </div>
+
+  <label for="exampleInputEmail1">Armar Tablero</label>
+ 
+  <form class="form-inline" method="POST" action="crear_tablero">
+	<div class="form-group">
+	  	 <%= csrf_token_field %>
+		 <label class="sr-only" for="exampleInputEmail3">Alto</label>
+		 <input class="form-control" id="boton_enviar" placeholder="Ancho" name="alto">
+		 <label class="sr-only" for="exampleInputEmail3">Ancho</label>
+		 <input class="form-control" id="boton_enviar" placeholder="Largo" name="ancho">
+	</div>
+	<button type="submit" class="btn btn-success" id="armar_tablero">Armar Tablero</button>
+   </form> 
+
+  <label for="exampleInputEmail1">Agregar Barco</label>
+  <form class="form-inline" method="POST" action="agregar_barco">
+	<div class="form-group">
+	  	 <%= csrf_token_field %>
+		 <label class="sr-only" for="exampleInputEmail3">Coordenadas</label>
+		 <input class="form-control" id="agregar_barco" placeholder="Coordenadas" name="coordenadas">
+	</div>
+	<button type="submit" class="btn btn-success" id=btnAgregarBarco">Agregar</button>
+  
+
+  <table class="tablero" name="tablero">
+  	<tbody>
+		<% for y in 1..session[:alto].to_i %>
+          <tr>
+     	<% for x in 1..session[:ancho].to_i 
+            if session[:x] == x && session[:y] == y then %>
+              <td style="background-color:green"></td>
+            <%else%>
+              <td style="background-color:blue"></td>
+            <%end%>
+        <%end%>
+         </tr>
+    <%end%>
+      <tbody>
+  </table>
+   
+
+  <p>Cantidad de barcos: <%= session[:cantBarcos] %></p>
+
+
+  <div id="disparar" style=" margin:0 auto;">
+	<label for="exampleInputEmail1">Disparar</label>
+		<div class="form-group">
+			<label class="sr-only" for="exampleInputEmail3">Coordenadas</label>
+			<input class="form-control" id="exampleInputEmail3" placeholder="Coordenadas">
+		</div>
+			<button type="submit" class="btn btn-danger">Disparar!</button>	</div>
+	</form>
+</div>
+
+ <p>Cantidad de barcos: <%= session[:cantBarcos] %></p>
+ <br/>
+ <p>Cantidad de barcos hundidos: <%= session[:cantHundidos] %></p>
+ <br/>
+ <p>Cantidad de barcos: <%= session[:cantAgua] %></p>
+ 		
+</body>
+</html>

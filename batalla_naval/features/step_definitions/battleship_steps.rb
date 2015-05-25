@@ -1,29 +1,13 @@
 require_relative '../../app/models/Board.rb'
 
-Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |arg1, arg2|
-  @board = Board.new(arg1.to_i, arg2.to_i)
+Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |x, y|
+  visit '/batalla'
+  fill_in(:ancho, :with => x)
+  fill_in(:alto, :with => y)
+  click_button "armar_tablero"
 end
 
 Given(/^I create a small ship in position "(.*?)"$/) do |coord|
-	@res = @board.put_small_ship(coord)  
+  fill_in(:coordenadas, :with => coord)
+  click_button "btnAgregarBarco"
 end
-
-Then(/^position "(.*?)" is not empty$/) do |coord|
- x,y =@board.getValidCoord(coord)
- expect(@board.is_empty(x,y)).to eq false
-end
-
-
-Given(/^I create a large ship in position "(.*?)"$/) do |coord|
-	@res = @board.put_large_ship(coord)  
-end
-
-Then(/^positions "(.*?)" is not empty$/) do |coord|
- x,y =@board.getValidCoord(coord)
- expect(@board.is_empty(x,y)).to eq false
-end
-
-Then(/^I get HayBarco$/) do
-   expect(@res).to eq "HayBarco"
-end
-
