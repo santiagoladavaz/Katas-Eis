@@ -24,6 +24,10 @@ Given(/^I create a large ship in position "(.*?)"$/) do |coord|
   click_button "btnAgregarBarco"
 end
 
+Then(/^I get HayBarco$/) do
+  page.should have_content('Ya existe un barco en esa coordenada')
+end
+
 
 
 

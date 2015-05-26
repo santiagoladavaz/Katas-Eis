@@ -83,6 +83,9 @@ table, th, td {
 		 <input type="radio" name="checkLargo" value="largo">Largo?<br>
 	</div>
 	<button type="submit" class="btn btn-success" id="btnAgregarBarco">Agregar</button>
+	<%if @res_to_put_boat.eql?("HayBarco")%> 
+		<p> Ya existe un barco en esa coordenada</p>
+	<%end%>
     </form>
 
 	<label for="exampleInputEmail2">Verificar Celda</label>

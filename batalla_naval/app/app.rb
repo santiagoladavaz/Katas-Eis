@@ -40,9 +40,9 @@ module Battleship
         session[:y]= a[1].to_i
         session[:cantBarcos] = session[:cantBarcos] + 1
         if @radio_data.eql?("largo") 
-          @tablero.put_large_ship(@coordenadas)
+          @res_to_put_boat = @tablero.put_large_ship(@coordenadas)
         else
-          @tablero.put_small_ship(@coordenadas)
+          @res_to_put_boat = @tablero.put_small_ship(@coordenadas)
         end
         session[:tablero] = @tablero
         render 'batalla/index'
