@@ -73,6 +73,8 @@ table, th, td {
 	<button type="submit" class="btn btn-success" id="armar_tablero">Armar Tablero</button>
    </form> 
 
+   <% if !session[:tablero].nil? %>
+
   <label for="exampleInputEmail1">Agregar Barco</label>
   <form class="form-inline" method="POST" action="agregar_barco">
 	
@@ -83,8 +85,10 @@ table, th, td {
 		 <input type="radio" name="checkLargo" value="largo">Largo?<br>
 	</div>
 	<button type="submit" class="btn btn-success" id="btnAgregarBarco">Agregar</button>
-	<%if @res_to_put_boat.eql?("HayBarco")%> 
-		<p> Ya existe un barco en esa coordenada</p>
+	<%if @res_to_put_boat.eql?("HayBarco")%>
+		</br> 
+		<div class="alert alert-warning"><p> Ya existe un barco en esa coordenada</p></div>
+		
 	<%end%>
     </form>
 
@@ -117,7 +121,6 @@ table, th, td {
   </table>
    
 
-  <p>Cantidad de barcos: <%= session[:cantBarcos] %></p>
 
   
   <div id="disparar" style=" margin:0 auto;">
@@ -129,9 +132,10 @@ table, th, td {
 			<input class="form-control" id="coordToShoot" placeholder="Coordenadas" name="coord_to_shoot">
 		</div>
 			<button type="submit" class="btn btn-danger" id="btnShoot">Disparar!</button>	
-		<p>Cantidad de barcos: <%= @res_to_shoot %></p>
+		<div class="alert alert-info"><%= @res_to_shoot %></div>
 	</form>
    </div>
+  <%end%>
 </div>
 
  		

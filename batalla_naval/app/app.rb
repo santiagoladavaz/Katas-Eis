@@ -15,9 +15,6 @@ module Battleship
     
   
     get 'batalla' do
-      session[:cantBarcos] = 0
-      session[:cantHundidos] = 0
-      session[:cantAgua] = 0
       render 'batalla/index'
     end
 
