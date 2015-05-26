@@ -1,5 +1,7 @@
 <html>
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 <!-- BOOTSTRAP -->
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -8,6 +10,21 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!-- /BOOTSTRAP -->
+
+<script type="text/javascript">
+var visibleDiv = <%= session[:divResultVisible] %>
+
+
+$(document).ready(function() {
+
+	if (visibleDiv)
+		$("#alert").show();
+	else
+		$("#alert").hide();
+});
+
+
+</script>
 
 <style>
 .tablero{
@@ -20,8 +37,14 @@
 table.tablero td {
  padding: 10px;
 }
-table.tablero td.a {
- background-image: url("ocean.jpg");
+.agua {
+ background-image: url("../../img/ocean.jpg");
+}
+.hit {
+ background-image: url("../../img/hit.jpg");
+}
+.sink {
+ background-image: url("../../img/sink.jpg");
 }
 table.tablero td.b {
   background-image: url("../../../public/img/ocean.jpg");
@@ -48,6 +71,7 @@ table, th, td {
  }
 
 
+
 </style>
 </head>
 
@@ -55,7 +79,7 @@ table, th, td {
 <div class="container">
   <div class="jumbotron">
     <div class="row">
-	  <div class="col-md-4"><img src="../../../public/img/barco.png" alt="boat" height="200" width="200" ></div>
+	  <div class="col-md-4"><img src="../../../img/barco.png" alt="boat" height="200" width="200" ></div>
 	  <div class="col-md-6"><h1>Batalla Naval</h1><p>Ultima kata de la materia Ingenieria de Software</p></div>
 	</div>
    </div>
@@ -101,42 +125,32 @@ table, th, td {
 	</div>
 	<button type="submit" class="btn btn-success" id="btnVerificarCelda">Verificar</button>
 </form>
-	<%= @verificar_celda %>
-  
-
-  <table class="tablero" name="tablero">
-  	<tbody>
-		<% for y in 1..session[:alto].to_i %>
-          <tr>
-     	<% for x in 1..session[:ancho].to_i 
-            if session[:x] == x && session[:y] == y %>
-              <td style="background-color:green"></td>
-            <%else%>
-              <td style="background-color:blue"></td>
-            <%end%>
-        <%end%>
-         </tr>
-    <%end%>
-      <tbody>
-  </table>
-   
-
-
-  
   <div id="disparar" style=" margin:0 auto;">
 	<form class="form-inline" method="POST" action="disparar">
 		<%= csrf_token_field %>
-	<label for="exampleInputEmail1">Disparar</label>
+	<label for="exampleInputEmail1">Disparar</label></br>
 		<div class="form-group">
 			<label class="sr-only" for="exampleInputEmail3">Coordenadas</label>
 			<input class="form-control" id="coordToShoot" placeholder="Coordenadas" name="coord_to_shoot">
 		</div>
-			<button type="submit" class="btn btn-danger" id="btnShoot">Disparar!</button>	
-		<div class="alert alert-info"><%= @res_to_shoot %></div>
+			<button type="submit" class="btn btn-danger" id="btnShoot">Disparar!</button>
+				
+		
 	</form>
    </div>
   <%end%>
 </div>
+<div id="alert" class="alert alert-info" style="text-aling:center;"><%= @res_to_shoot %></div>
+
+
+   <table class="tablero" name="tablero2">
+   		<%= @tabla %>
+   	<table>
+
+
+  
+		
+
 
  		
 </body>
