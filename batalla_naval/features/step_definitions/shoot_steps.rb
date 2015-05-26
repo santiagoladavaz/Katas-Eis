@@ -26,4 +26,8 @@ Then(/^I get water$/) do
   page.should have_content('WATER')
 end
 
+Then(/^I get sink$/) do
+  page.should have_content('SINK')
+end
+
 
