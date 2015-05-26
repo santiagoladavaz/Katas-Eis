@@ -22,5 +22,8 @@ Then(/^I get hit$/) do
    page.should have_content('HIT')
 end
 
+Then(/^I get water$/) do
+  page.should have_content('WATER')
+end
 
 
