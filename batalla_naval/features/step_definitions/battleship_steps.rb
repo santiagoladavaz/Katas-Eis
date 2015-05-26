@@ -15,7 +15,15 @@ end
 Then(/^position "(.*?)" is not empty$/) do |coord|
   fill_in(:coordenadas, :with => coord)
   click_button "btnVerificarCelda"
-  page.should have_content('')
+  page.should have_content('false')
 end
+
+Given(/^I create a large ship in position "(.*?)"$/) do |coord|
+  fill_in(:coordenadas_agregar, :with => coord)
+  choose("checkLargo")
+  click_button "btnAgregarBarco"
+end
+
+
 
 

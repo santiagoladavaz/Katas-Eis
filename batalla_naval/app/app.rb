@@ -33,13 +33,17 @@ module Battleship
 
     post 'agregar_barco' do
         @coordenadas=params[:coordenadas_agregar]
+        @radio_data = params[:checkLargo]
         @tablero = session[:tablero]
         a = @coordenadas.split(":")
         session[:x] = a[0].to_i
         session[:y]= a[1].to_i
         session[:cantBarcos] = session[:cantBarcos] + 1
-        @tablero.put_small_ship(@coordenadas)
-        
+        if @radio_data.eql?("largo") 
+          @tablero.put_large_ship(@coordenadas)
+        else
+          @tablero.put_small_ship(@coordenadas)
+        end
         session[:tablero] = @tablero
         render 'batalla/index'
     end
