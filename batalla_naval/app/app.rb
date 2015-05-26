@@ -56,6 +56,13 @@ module Battleship
       @y = a[1].to_i
       @verificar_celda = @tablero.is_empty(@x,@y).to_s
       render 'batalla/index'
+    end
+
+    post 'disparar' do
+      @tablero = session[:tablero]
+      @coordenadas=params[:coord_to_shoot]
+      @res_to_shoot = @tablero.shoot(@coordenadas)
+      render 'batalla/index'
     end 
 
   end

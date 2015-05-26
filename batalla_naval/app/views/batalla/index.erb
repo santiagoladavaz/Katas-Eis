@@ -121,21 +121,19 @@ table, th, td {
 
   
   <div id="disparar" style=" margin:0 auto;">
-	<form>
+	<form class="form-inline" method="POST" action="disparar">
+		<%= csrf_token_field %>
 	<label for="exampleInputEmail1">Disparar</label>
 		<div class="form-group">
 			<label class="sr-only" for="exampleInputEmail3">Coordenadas</label>
-			<input class="form-control" id="exampleInputEmail3" placeholder="Coordenadas">
+			<input class="form-control" id="coordToShoot" placeholder="Coordenadas" name="coord_to_shoot">
 		</div>
-			<button type="submit" class="btn btn-danger">Disparar!</button>	</div>
+			<button type="submit" class="btn btn-danger" id="btnShoot">Disparar!</button>	
+		<p>Cantidad de barcos: <%= @res_to_shoot %></p>
 	</form>
+   </div>
 </div>
 
- <p>Cantidad de barcos: <%= session[:cantBarcos] %></p>
- <br/>
- <p>Cantidad de barcos hundidos: <%= session[:cantHundidos] %></p>
- <br/>
- <p>Cantidad de barcos: <%= session[:cantAgua] %></p>
  		
 </body>
 </html>

@@ -1,29 +1,26 @@
 require_relative '../../app/models/Board.rb'
 
 Given(/^a board with dimension "(.*?)" x "(.*?)"$/) do |x, y|
-  @board = Board.new(x.to_i, y.to_i)
+  visit '/batalla'
+  fill_in(:ancho, :with => x)
+  fill_in(:alto, :with => y)
+  click_button "armar_tablero"
 end
 
 Given(/^a large ship in position "(.*?)"$/) do |coord|
-  @board.put_large_ship(coord) 
+  fill_in(:coordenadas_agregar, :with => coord)
+  choose("checkLargo")
+  click_button "btnAgregarBarco"
 end
 
-
 Given(/^I shoot to position "(.*?)"$/) do |coord|
-  @res_of_shoot = @board.shoot(coord)
-  @res_of_second_shoot = @board.shoot(coord)
+  fill_in(:coordToShoot, :with => coord)
+  click_button "btnShoot"
 end
 
 Then(/^I get hit$/) do
-	expect(@res_of_shoot).to eq 'HIT'
+   page.should have_content('HIT')
 end
 
-Then(/^I get water$/) do
-  expect(@res_of_second_shoot).to eq 'WATER'
-end
-
-Then(/^I get sink$/) do
-  expect(@res_of_shoot).to eq 'SINK'
-end
 
 
