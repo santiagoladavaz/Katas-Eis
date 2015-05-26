@@ -35,7 +35,6 @@ module Battleship
         a = @coordenadas.split(":")
         session[:x] = a[0].to_i
         session[:y]= a[1].to_i
-        session[:cantBarcos] = session[:cantBarcos] + 1
         if @radio_data.eql?("largo") 
           @res_to_put_boat = @tablero.put_large_ship(@coordenadas)
         else
