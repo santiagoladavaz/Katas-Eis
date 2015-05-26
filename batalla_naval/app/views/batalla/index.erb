@@ -75,12 +75,25 @@ table, th, td {
 
   <label for="exampleInputEmail1">Agregar Barco</label>
   <form class="form-inline" method="POST" action="agregar_barco">
+	
 	<div class="form-group">
 	  	 <%= csrf_token_field %>
 		 <label class="sr-only" for="exampleInputEmail3">Coordenadas</label>
-		 <input class="form-control" id="agregar_barco" placeholder="Coordenadas" name="coordenadas">
+		 <input class="form-control" id="agregar_barco" placeholder="Coordenadas" name="coordenadas_agregar"></input>
 	</div>
-	<button type="submit" class="btn btn-success" id=btnAgregarBarco">Agregar</button>
+	<button type="submit" class="btn btn-success" id="btnAgregarBarco">Agregar</button>
+    </form>
+
+	<label for="exampleInputEmail2">Verificar Celda</label>
+	<form class="form-inline" method="POST" action="verificar_celda">
+	<div class="form-group">
+	  	 <%= csrf_token_field %>
+		 <label class="sr-only" for="exampleInputEmail3">Coordenadas</label>
+		 <input class="form-control" id="VerificarCelda" placeholder="Coordenadas" name="coordenadas">
+	</div>
+	<button type="submit" class="btn btn-success" id="btnVerificarCelda">Verificar</button>
+</form>
+	<%= @verificar_celda %>
   
 
   <table class="tablero" name="tablero">
@@ -102,8 +115,9 @@ table, th, td {
 
   <p>Cantidad de barcos: <%= session[:cantBarcos] %></p>
 
-
+  
   <div id="disparar" style=" margin:0 auto;">
+	<form>
 	<label for="exampleInputEmail1">Disparar</label>
 		<div class="form-group">
 			<label class="sr-only" for="exampleInputEmail3">Coordenadas</label>

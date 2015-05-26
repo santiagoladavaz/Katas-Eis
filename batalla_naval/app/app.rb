@@ -32,7 +32,7 @@ module Battleship
     end 
 
     post 'agregar_barco' do
-        @coordenadas=params[:coordenadas]
+        @coordenadas=params[:coordenadas_agregar]
         @tablero = session[:tablero]
         a = @coordenadas.split(":")
         session[:x] = a[0].to_i
@@ -43,6 +43,16 @@ module Battleship
         session[:tablero] = @tablero
         render 'batalla/index'
     end
+
+    post 'verificar_celda' do
+      @tablero = session[:tablero]
+      @coordenadas=params[:coordenadas]
+      a = @coordenadas.split(":")
+      @x = a[0].to_i
+      @y = a[1].to_i
+      @verificar_celda = @tablero.is_empty(@x,@y).to_s
+      render 'batalla/index'
+    end 
 
   end
 end
